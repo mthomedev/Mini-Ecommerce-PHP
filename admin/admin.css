@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap");
+
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --red:        #c41e1e;
+  --red-bright: #e8242b;
+  --gold:       #d4a017;
+  --bg:         #0d0d0d;
+  --surface:    #131313;
+  --surface2:   #1a1a1a;
+  --border:     rgba(255, 255, 255, 0.07);
+  --text:       #f0ede8;
+  --muted:      #5a5755;
+}
+
+/* ─── RESET ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+/* ─── BASE ───────────────────────────────────────────────── */
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: "Barlow", sans-serif;
+  color: var(--text);
+}
+
+/* ─── HEADER (listar / index) ────────────────────────────── */
+header {
+  padding: 30px 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+#title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-right: auto;
+}
+
+/* header nav links */
+#novo,
+#menu {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 24px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+  font-family: "Barlow", sans-serif;
+}
+#novo:hover  { border-color: var(--red);  color: var(--red);  }
+#menu:hover  { border-color: var(--gold); color: var(--gold); }
+
+/* ─── MAIN ───────────────────────────────────────────────── */
+main {
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+footer {
+  padding: 20px 60px;
+}
+
+/* ─── SEARCH BAR (listar) ────────────────────────────────── */
+form.search-form {
+  display: flex;
+  gap: 0;
+}
+
+#searchBusca {
+  height: 44px;
+  width: 300px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-right: 0;
+  border-radius: 2px 0 0 2px;
+  padding: 0 16px;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+}
+#searchBusca:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+#btnBusca {
+  height: 44px;
+  padding: 0 22px;
+  background: var(--red);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  border-radius: 0 2px 2px 0;
+  border: 1px solid var(--red);
+  transition: background 0.2s;
+}
+#btnBusca:hover { background: var(--red-bright); }
+
+/* ─── TABLE (listar) ─────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead tr { background: var(--surface2); }
+thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+tbody tr {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+tbody tr:hover { background: var(--surface2); }
+td {
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+td:first-child {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* table image thumbnails */
+td img {
+  border-radius: 2px;
+  display: block;
+}
+
+/* ─── INLINE LINKS (table actions / generic) ─────────────── */
+a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-right: 10px;
+  transition: color 0.2s;
+}
+a:hover { color: var(--text); }
+a[href*="excluir"]       { color: var(--red); }
+a[href*="excluir"]:hover { color: var(--red-bright); }
+
+/* ─── CENTERED PAGES (login / cadastrar) ────────────────────
+   Applied when body has class="center-page"
+   OR when the page itself sets body to flex+center.
+   We keep backwards compat: login.php and cadastrar.php
+   already rely on body being a flex column.
+──────────────────────────────────────────────────────────── */
+body.center-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+/* page heading used on centered pages */
+#cadastrar,
+#editar,
+#login-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── FORM CARD (cadastrar / editar / login) ─────────────── */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px 48px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(480px, 92vw);
+}
+
+/* standalone labels */
+label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: -6px;
+}
+
+/* inputs & selects */
+input,
+select {
+  height: 42px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0 14px;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--red);
+}
+input[type="file"] {
+  padding: 10px 14px;
+  height: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+select option { background: var(--surface); }
+
+/* submit button */
+button[type="submit"] {
+  height: 46px;
+  width: 100%;
+  margin-top: 8px;
+  background: var(--red);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Barlow", sans-serif;
+  border-radius: 2px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: background 0.2s;
+}
+button[type="submit"]:hover { background: var(--red-bright); }
+
+/* bottom nav links on centered pages */
+.form-links {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+.form-links a {
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-bottom: 1px solid transparent;
+  margin: 0 6px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.form-links a:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* error message (login) */
+.error-msg {
+  color: var(--red-bright);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ─── INDEX / PAINEL (menu cards) ────────────────────────── */
+.card-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 32px 36px;
+  width: 260px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: var(--red);
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card ul li a {
+  color: var(--text);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  margin-right: 0;
+}
+.card ul li a:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* logout link on index */
+.card ul li a.logout {
+  color: var(--red);
+}
+.card ul li a.logout:hover {
+  color: var(--red-bright);
+  border-color: var(--red-bright);
+}
+
+/* divider */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ─── EDITAR — current image preview ────────────────────── */
+.img-preview {
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  header       { padding: 20px 24px; }
+  main         { padding: 24px; }
+  footer       { padding: 16px 24px; }
+
+  .form-card   { padding: 28px 24px; }
+
+  .card-grid   { flex-direction: column; }
+  .card        { width: 100%; }
+
+  #searchBusca { width: 200px; }
+}

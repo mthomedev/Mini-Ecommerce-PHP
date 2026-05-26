@@ -1,18 +1,26 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+session_start();
 
-?>
+if (!isset($_SESSION['admin'])) {
 
-<?php
+    header("Location: login.php");
+    exit;
+}
 
 include "../conexao.php";
 
-$id = $_GET['id'];
+// valida ID
+$id = (int) $_GET['id'];
 
-$sql = "DELETE FROM produtos WHERE id = $id";
+// prepared statement
+$stmt = $con->prepare(
+    "DELETE FROM produtos WHERE id = ?"
+);
 
-mysqli_query($con, $sql);
+$stmt->bind_param("i", $id);
+
+$stmt->execute();
 
 header("Location: listar.php");
+exit;

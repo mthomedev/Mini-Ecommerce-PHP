@@ -1,50 +1,109 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+session_start();
+
+if (!isset($_SESSION['admin'])) {
+
+    header("Location: login.php");
+    exit;
+}
 
 include "../conexao.php";
 
-$id = $_POST['id'];
-$nome = $_POST['nome'];
-$descricao = $_POST['descricao'];
-$preco = $_POST['preco'];
-$categoria = $_POST['categoria'];
-$estoque = $_POST['estoque'];
-$status = $_POST['status'];
+$id = (int) $_POST['id'];
 
-$imagem = $_FILES['imagem']['name'];
+$nome = trim($_POST['nome']);
+$descricao = trim($_POST['descricao']);
+$preco = (float) $_POST['preco'];
+$categoria = trim($_POST['categoria']);
+$estoque = (int) $_POST['estoque'];
+$status = trim($_POST['status']);
 
-if ($imagem != "" && $_FILES['imagem']['error'] == 0) {
+if (!empty($_FILES['imagem']['name']) && $_FILES['imagem']['error'] == 0) {
 
-    $imagem = time() . "_" . $imagem;
+    // extensões permitidas
+    $permitidos = ['jpg', 'jpeg', 'png'];
+
+    $extensao = strtolower(
+        pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION)
+    );
+
+    if (!in_array($extensao, $permitidos)) {
+
+        die("Formato de imagem inválido.");
+    }
+
+    // valida MIME
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+
+    $mime = finfo_file($finfo, $_FILES['imagem']['tmp_name']);
+
+    $mimesPermitidos = ['image/jpeg', 'image/png'];
+
+    if (!in_array($mime, $mimesPermitidos)) {
+
+        die("Arquivo inválido.");
+    }
+
+    // nome seguro
+    $imagem = uniqid() . "." . $extensao;
+
     $tmp = $_FILES['imagem']['tmp_name'];
 
-    move_uploaded_file($tmp, "../uploads/".$imagem);
+    move_uploaded_file($tmp, "../uploads/" . $imagem);
 
-    $sql = "UPDATE produtos SET
-    nome='$nome',
-    descricao='$descricao',
-    preco='$preco',
-    categoria='$categoria',
-    estoque='$estoque',
-    status='$status',
-    imagem='$imagem'
-    WHERE id=$id";
+    // UPDATE seguro
+    $stmt = $con->prepare("
+        UPDATE produtos SET
+        nome = ?,
+        descricao = ?,
+        preco = ?,
+        categoria = ?,
+        estoque = ?,
+        status = ?,
+        imagem = ?
+        WHERE id = ?
+    ");
+
+    $stmt->bind_param(
+        "ssdssssi",
+        $nome,
+        $descricao,
+        $preco,
+        $categoria,
+        $estoque,
+        $status,
+        $imagem,
+        $id
+    );
 
 } else {
 
-    $sql = "UPDATE produtos SET
-    nome='$nome',
-    descricao='$descricao',
-    preco='$preco',
-    categoria='$categoria',
-    estoque='$estoque',
-    status='$status'
-    WHERE id=$id";
+    // UPDATE sem imagem
+    $stmt = $con->prepare("
+        UPDATE produtos SET
+        nome = ?,
+        descricao = ?,
+        preco = ?,
+        categoria = ?,
+        estoque = ?,
+        status = ?
+        WHERE id = ?
+    ");
 
+    $stmt->bind_param(
+        "ssdsssi",
+        $nome,
+        $descricao,
+        $preco,
+        $categoria,
+        $estoque,
+        $status,
+        $id
+    );
 }
 
-mysqli_query($con, $sql);
+$stmt->execute();
 
 header("Location: listar.php");
+exit;
