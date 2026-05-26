@@ -1,0 +1,1535 @@
+/* ─────────────────────────────────────────────
+   ROCK PULSE — MODERN PREMIUM STORE UI
+───────────────────────────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --red: #c41e1e;
+  --red-bright: #ff3a3a;
+
+  --gold: #d4a017;
+
+  --bg: #0b0b0b;
+
+  --surface: #121212;
+  --surface2: #191919;
+
+  --border: rgba(255, 255, 255, 0.06);
+
+  --text: #f4f1ec;
+  --muted: #8b8883;
+
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ───────── RESET ───────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family: "Barlow", sans-serif;
+
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* ───────────────── NAVBAR ───────────────── */
+
+nav {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 60px;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid transparent;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    height 0.3s ease,
+    padding 0.3s ease;
+}
+
+.nav-scrolled {
+  background: rgba(0, 0, 0, 0.92);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  height: 82px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  height: 160px;
+
+  object-fit: contain;
+
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.45));
+}
+
+/* ───────── SEARCH ───────── */
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  padding: 6px;
+
+  border-radius: 14px;
+
+  transition: 0.25s;
+}
+
+.search-form:focus-within {
+  border-color: rgba(196, 30, 30, 0.45);
+
+  box-shadow: 0 0 0 4px rgba(196, 30, 30, 0.14);
+}
+
+.search-input {
+  width: 260px;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  color: white;
+
+  padding: 10px 14px;
+
+  font-size: 0.92rem;
+}
+
+.search-input::placeholder {
+  color: #7c7c7c;
+}
+
+.search-btn {
+  border: none;
+
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.search-btn:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.95;
+}
+
+/* ───────── CART ───────── */
+
+#cart-btn {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+#cart-btn:hover {
+  border-color: var(--red);
+
+  transform: translateY(-2px);
+}
+
+#cart-img {
+  width: 24px;
+  height: 24px;
+}
+
+.cart-badge {
+  position: absolute;
+
+  top: -4px;
+  right: -4px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--red);
+
+  color: white;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ───────────────── HERO ───────────────── */
+
+header {
+  position: relative;
+
+  height: 100vh;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.8)),
+    url("../imgs/banner.jpg");
+
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#top {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: auto;
+
+  padding: 0 60px 100px;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-tag {
+  display: inline-flex;
+
+  margin-bottom: 20px;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: var(--gold);
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+#title {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: clamp(4rem, 9vw, 9rem);
+
+  line-height: 0.92;
+
+  letter-spacing: 0.03em;
+
+  margin-bottom: 14px;
+}
+
+#subt {
+  color: #d5d0c9;
+
+  font-size: 1rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  margin-bottom: 36px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+#explore,
+.hero-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 170px;
+
+  padding: 15px 30px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+#explore {
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+}
+
+.hero-secondary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: white;
+
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#explore:hover,
+.hero-secondary-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ───────────────── CATEGORIAS ───────────────── */
+
+.abas {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+
+  padding: 80px 60px;
+
+  max-width: 1500px;
+
+  margin: auto;
+}
+
+.aba {
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 24px;
+
+  padding: 40px 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition:
+    transform 0.3s,
+    border-color 0.3s;
+}
+
+.aba:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.aba::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(196, 30, 30, 0.12),
+    transparent 60%
+  );
+
+  pointer-events: none;
+}
+
+.aba-img {
+  height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aba img {
+  max-height: 180px;
+
+  object-fit: contain;
+
+  transition: transform 0.3s;
+}
+
+.aba:hover img {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.aba h3 {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 2rem;
+
+  letter-spacing: 0.08em;
+
+  margin-bottom: 18px;
+}
+
+.vertd {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.03);
+
+  color: white;
+
+  padding: 12px 24px;
+
+  border-radius: 12px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.14em;
+
+  font-size: 0.75rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.vertd:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  transform: translateY(-2px);
+}
+
+/* ───────────────── TITLES ───────────────── */
+
+.section-title-wrapper {
+  padding: 0 60px 40px;
+}
+
+#produto-title {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 3rem;
+
+  letter-spacing: 0.05em;
+
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+
+  max-width: 500px;
+
+  line-height: 1.6;
+}
+
+/* ───────────────── PRODUTOS ───────────────── */
+
+.produtos {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 28px;
+
+  padding: 0 60px 120px;
+
+  max-width: 1600px;
+
+  margin: auto;
+}
+
+.produto {
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform 0.3s,
+    border-color 0.3s;
+}
+
+.produto:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.produto::before {
+  content: "";
+
+  position: absolute;
+
+  top: -120px;
+  right: -120px;
+
+  width: 240px;
+  height: 240px;
+
+  background: radial-gradient(circle, rgba(196, 30, 30, 0.12), transparent 70%);
+
+  pointer-events: none;
+}
+
+.produto-image-wrapper {
+  height: 260px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+#img-produto {
+  max-height: 240px;
+
+  object-fit: contain;
+
+  transition: transform 0.35s;
+}
+
+.produto:hover #img-produto {
+  transform: scale(1.04);
+}
+
+.produto-info {
+  flex: 1;
+}
+
+.produto h2 {
+  font-size: 1.15rem;
+
+  margin-bottom: 10px;
+}
+
+.produto p {
+  color: var(--muted);
+
+  line-height: 1.6;
+
+  font-size: 0.92rem;
+}
+
+.comprar {
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.price-stock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-stock h3 {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 2rem;
+
+  color: var(--gold);
+}
+
+.stock-info {
+  color: #7d7d7d;
+
+  font-size: 0.82rem;
+}
+
+.cart-form {
+  display: flex;
+  gap: 12px;
+}
+
+#quant {
+  width: 70px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 12px;
+
+  color: white;
+
+  text-align: center;
+
+  font-size: 1rem;
+}
+
+.addtocart {
+  flex: 1;
+
+  border: none;
+
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.14em;
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.addtocart:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.95;
+}
+
+/* ───────────────── EMPTY PRODUCTS ───────────────── */
+
+.empty-products {
+  grid-column: 1/-1;
+
+  text-align: center;
+
+  padding: 80px 20px;
+}
+
+.empty-products h2 {
+  font-size: 2rem;
+
+  margin-bottom: 12px;
+}
+
+.empty-products p {
+  color: var(--muted);
+}
+
+/* ───────────────── TOAST ───────────────── */
+
+#toast {
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  background: linear-gradient(135deg, #1f9d55, #34d399);
+
+  color: white;
+
+  padding: 16px 24px;
+
+  border-radius: 16px;
+
+  font-weight: 700;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(20px);
+
+  transition: 0.3s;
+
+  z-index: 9999;
+}
+
+#toast.show {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+/* ───────────────── SIDEBAR CARRINHO ───────────────── */
+
+#cart-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s;
+
+  z-index: 998;
+}
+
+#cart-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#cart-sidebar {
+  position: fixed;
+
+  top: 0;
+  right: -430px;
+
+  width: 430px;
+  max-width: 100%;
+
+  height: 100vh;
+
+  background: #101010;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.35s ease;
+}
+
+#cart-sidebar.active {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cart-header h2 {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 2rem;
+}
+
+#close-cart {
+  background: none;
+  border: none;
+
+  color: white;
+
+  font-size: 1.5rem;
+
+  cursor: pointer;
+}
+
+.cart-content {
+  flex: 1;
+
+  padding: 24px;
+
+  overflow-y: auto;
+}
+
+.empty-cart {
+  color: var(--muted);
+
+  text-align: center;
+
+  margin-top: 60px;
+}
+
+/* ───────────────── RESPONSIVO ───────────────── */
+
+@media (max-width: 1000px) {
+  .abas {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    padding: 0 20px;
+  }
+
+  .search-input {
+    width: 150px;
+  }
+
+  #top,
+  .section-title-wrapper,
+  .produtos,
+  .abas {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  nav {
+    gap: 10px;
+
+    height: auto;
+
+    padding: 16px;
+
+    flex-wrap: wrap;
+  }
+
+  #logo {
+    height: 90px;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  #top {
+    padding-bottom: 60px;
+  }
+
+  #title {
+    font-size: 4rem;
+  }
+
+  #subt {
+    font-size: 0.8rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .produto-image-wrapper {
+    height: 220px;
+  }
+
+  #cart-sidebar {
+    width: 100%;
+  }
+}
+/* ───────────────── CARRINHO PAGE ───────────────── */
+
+.carrinho-container {
+  max-width: 1200px;
+
+  margin: 140px auto 80px;
+
+  padding: 0 60px;
+}
+
+.carrinho-title {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 3.5rem;
+
+  letter-spacing: 0.05em;
+
+  margin-bottom: 40px;
+}
+
+.carrinho-grid {
+  display: grid;
+
+  gap: 20px;
+}
+
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.item-carrinho:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.item-carrinho img {
+  width: 130px;
+  height: 130px;
+
+  object-fit: contain;
+
+  border-radius: 18px;
+
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04), transparent);
+
+  padding: 10px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h2,
+.item-info h3 {
+  font-size: 1.4rem;
+
+  margin-bottom: 10px;
+}
+
+.item-info p {
+  color: var(--muted);
+
+  line-height: 1.6;
+}
+
+.item-price {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 2rem;
+
+  color: var(--gold);
+
+  margin-top: 12px;
+}
+
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 14px;
+}
+
+.item-quantidade {
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+.remover,
+.remove-from-cart-btn {
+  text-decoration: none;
+
+  background: rgba(196, 30, 30, 0.1);
+
+  border: 1px solid rgba(196, 30, 30, 0.2);
+
+  color: #ffb3b3;
+
+  padding: 10px 18px;
+
+  border-radius: 12px;
+
+  font-size: 0.8rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.remover:hover,
+.remove-from-cart-btn:hover {
+  background: rgba(196, 30, 30, 0.18);
+
+  transform: translateY(-2px);
+}
+
+.total-carrinho {
+  margin-top: 40px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 24px;
+
+  padding: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.total-info h2 {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: 2.6rem;
+
+  color: var(--gold);
+}
+
+.total-info p {
+  color: var(--muted);
+
+  margin-top: 8px;
+}
+
+.finalizar-btn {
+  border: none;
+
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+
+  padding: 18px 34px;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.finalizar-btn:hover {
+  transform: translateY(-3px);
+
+  opacity: 0.95;
+}
+
+.carrinho-vazio {
+  text-align: center;
+
+  padding: 120px 20px;
+}
+
+.carrinho-vazio h2 {
+  font-size: 2.5rem;
+
+  margin-bottom: 14px;
+}
+
+.carrinho-vazio p {
+  color: var(--muted);
+
+  margin-bottom: 30px;
+}
+
+.voltar-loja {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 28px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.voltar-loja:hover {
+  transform: translateY(-3px);
+
+  opacity: 0.95;
+}
+
+/* ───────── RESPONSIVO CARRINHO ───────── */
+
+@media (max-width: 800px) {
+  .carrinho-container {
+    padding: 0 20px;
+  }
+
+  .item-carrinho {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .item-actions {
+    align-items: center;
+  }
+
+  .total-carrinho {
+    flex-direction: column;
+
+    text-align: center;
+  }
+}
+
+.sidebar-item {
+  display: flex;
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-item img {
+  width: 70px;
+  height: 70px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
+.sidebar-item-info {
+  flex: 1;
+}
+
+.sidebar-item-info h3 {
+  font-size: 0.95rem;
+
+  margin-bottom: 6px;
+}
+
+.sidebar-item-info p {
+  color: #8f8f8f;
+
+  margin-bottom: 6px;
+
+  font-size: 0.85rem;
+}
+
+.sidebar-item-info span {
+  color: var(--gold);
+
+  font-weight: 700;
+}
+
+.sidebar-total {
+  margin-top: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+}
+
+.sidebar-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+}
+
+/* ───────────────── CHECKOUT PAGE ───────────────── */
+
+.checkout-container {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(circle at top, rgba(196, 30, 30, 0.12), transparent 30%),
+    var(--bg);
+}
+
+.checkout-box {
+  width: 100%;
+  max-width: 720px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 28px;
+
+  padding: 55px 45px;
+
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.checkout-box::before {
+  content: "";
+
+  position: absolute;
+
+  top: -120px;
+  right: -120px;
+
+  width: 240px;
+  height: 240px;
+
+  background: radial-gradient(circle, rgba(196, 30, 30, 0.18), transparent 70%);
+
+  pointer-events: none;
+}
+
+/* ───────── SUCCESS ICON ───────── */
+
+.checkout-success-icon,
+.empty-cart-icon {
+  width: 110px;
+  height: 110px;
+
+  margin: 0 auto 30px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 48px;
+  font-weight: 700;
+
+  color: white;
+}
+
+.checkout-success-icon {
+  background: linear-gradient(135deg, #16a34a, #34d399);
+
+  box-shadow: 0 12px 35px rgba(22, 163, 74, 0.35);
+}
+
+.empty-cart-icon {
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  box-shadow: 0 12px 35px rgba(196, 30, 30, 0.35);
+}
+
+/* ───────── TITLES ───────── */
+
+.checkout-title {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  letter-spacing: 0.05em;
+
+  text-align: center;
+
+  margin-bottom: 18px;
+
+  color: var(--text);
+}
+
+.checkout-subtitle {
+  max-width: 520px;
+
+  margin: 0 auto 40px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+}
+
+/* ───────── TOTAL BOX ───────── */
+
+.checkout-total-box {
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  margin-bottom: 35px;
+
+  text-align: center;
+}
+
+.checkout-total-label {
+  color: #8f8f8f;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.18em;
+
+  font-size: 0.8rem;
+
+  margin-bottom: 12px;
+}
+
+.checkout-total-value {
+  font-family: "Bebas Neue", sans-serif;
+
+  font-size: clamp(2.8rem, 5vw, 4rem);
+
+  color: var(--gold);
+
+  letter-spacing: 0.03em;
+}
+
+/* ───────── ERRORS ───────── */
+
+.checkout-errors {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  margin-bottom: 30px;
+}
+
+.checkout-error {
+  background: rgba(196, 30, 30, 0.1);
+
+  border: 1px solid rgba(196, 30, 30, 0.25);
+
+  color: #ffb4b4;
+
+  padding: 18px 20px;
+
+  border-radius: 16px;
+
+  line-height: 1.6;
+
+  font-size: 0.95rem;
+}
+
+/* ───────── BUTTON ───────── */
+
+.checkout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 16px 28px;
+
+  border-radius: 16px;
+
+  text-decoration: none;
+
+  background: linear-gradient(135deg, var(--red), var(--red-bright));
+
+  color: white;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.14em;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s,
+    box-shadow 0.2s;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-3px);
+
+  opacity: 0.96;
+
+  box-shadow: 0 14px 30px rgba(196, 30, 30, 0.3);
+}
+
+/* ───────── EMPTY CART ───────── */
+
+.empty-cart-box {
+  text-align: center;
+}
+
+/* ───────── RESPONSIVO ───────── */
+
+@media (max-width: 700px) {
+  .checkout-box {
+    padding: 40px 24px;
+  }
+
+  .checkout-success-icon,
+  .empty-cart-icon {
+    width: 90px;
+    height: 90px;
+
+    font-size: 40px;
+  }
+
+  .checkout-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .checkout-total-box {
+    padding: 24px 18px;
+  }
+}

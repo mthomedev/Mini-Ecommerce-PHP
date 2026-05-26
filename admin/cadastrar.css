@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap");
+
+:root {
+  --red: #c41e1e;
+  --gold: #d4a017;
+  --bg: #0d0d0d;
+  --surface: #131313;
+  --border: rgba(255, 255, 255, 0.09);
+  --text: #f0ede8;
+  --muted: #5a5755;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: "Barlow", sans-serif;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+#cadastrar {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px 48px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(480px, 92vw);
+}
+
+label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: -6px;
+}
+
+input,
+select {
+  height: 42px;
+  width: 100%;
+  border-radius: 2px;
+  background: #0d0d0d;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0 14px;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--red);
+}
+input[type="file"] {
+  padding: 10px 14px;
+  height: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+select option {
+  background: #131313;
+}
+
+button[type="submit"] {
+  height: 46px;
+  width: 100%;
+  margin-top: 8px;
+  background: var(--red);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Barlow", sans-serif;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: background 0.2s;
+}
+button[type="submit"]:hover {
+  background: #e8242b;
+}
+
+a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+  margin: 0 6px;
+}
+a:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
